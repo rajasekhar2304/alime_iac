@@ -8,4 +8,5 @@ module "vnets" {
   source      = "./modules/vnet"
   vnets       = var.vnets
   common_tags = local.common_tags
+  depends_on = [ module.resource_groups ]
 }
