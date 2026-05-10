@@ -15,5 +15,5 @@ resource_groups = {
       environment = "uat"
       owner       = "devops"
     }
-  }  
+  }
 }

@@ -23,5 +23,5 @@ resource_groups = {
       environment = "prod"
       owner       = "devops"
     }
-  }     
+  }
 }
