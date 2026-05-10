@@ -1,0 +1,6 @@
+## commands ##
+> terraform init -backend-config=./backend/dev.hcl
+> terraform fmt -recursive
+> terraform plan -var-file=environments/dev.tfvars
+> terraform apply -var-file=environments/dev.tfvars
+
