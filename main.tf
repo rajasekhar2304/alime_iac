@@ -5,7 +5,7 @@ module "resource_groups" {
 }
 
 module "vnets" {
-  source = "./modules/vnet"
+  source      = "./modules/vnet"
   vnets       = var.vnets
   common_tags = local.common_tags
 }
