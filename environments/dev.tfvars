@@ -1,10 +1,9 @@
 environment = "dev"
 resource_groups = {
-  rg-1 = {
-    name     = "alime-rg-dev-1"
+  rg = {
+    name     = "alime-dev-rg"
     location = "Central India"
-    tags = {
-      environment = "dev"
+    tags = {      
       owner       = "devops"
     }
   }
