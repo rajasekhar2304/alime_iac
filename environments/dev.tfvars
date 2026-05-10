@@ -37,30 +37,30 @@ subnets = {
     name                 = "AzureFirewallSubnet"
     resource_group_name  = "alime-dev-rg"
     virtual_network_name = "vnet-dev-hub"
-    address_prefixes = ["10.48.1.0/24"]
+    address_prefixes     = ["10.48.1.0/24"]
   }
   agw = {
     name                 = "agw-subnet"
     resource_group_name  = "alime-dev-rg"
     virtual_network_name = "vnet-dev-hub"
-    address_prefixes = ["10.48.2.0/24"]
+    address_prefixes     = ["10.48.2.0/24"]
   }
   web = {
     name                 = "web-subnet"
     resource_group_name  = "alime-dev-rg"
     virtual_network_name = "vnet-dev-spoke"
-    address_prefixes = ["10.49.1.0/24"]
+    address_prefixes     = ["10.49.1.0/24"]
   }
   app = {
     name                 = "app-subnet"
     resource_group_name  = "alime-dev-rg"
     virtual_network_name = "vnet-dev-spoke"
-    address_prefixes = ["10.49.2.0/24"]
+    address_prefixes     = ["10.49.2.0/24"]
   }
   db = {
     name                 = "db-subnet"
     resource_group_name  = "alime-dev-rg"
     virtual_network_name = "vnet-dev-spoke"
-    address_prefixes = ["10.49.3.0/24"]
-  }    
+    address_prefixes     = ["10.49.3.0/24"]
+  }
 }
