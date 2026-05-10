@@ -1,4 +1,5 @@
 environment = "prod"
+
 resource_groups = {
   rg = {
     name     = "alime-prod-rg"
@@ -8,11 +9,12 @@ resource_groups = {
     }
   }
 }
+
 vnets = {
   hub = {
     name                = "vnet-prod-hub"
     location            = "Central India"
-    resource_group_name = "alime-dev-rg"
+    resource_group_name = "alime-prod-rg"
     address_space       = ["10.50.0.0/16"]
     tags = {
       purpose = "hub"
@@ -27,5 +29,40 @@ vnets = {
     tags = {
       purpose = "spoke"
     }
+  }
+}
+
+subnets = {
+  # hub subnets
+  firewall = {
+    name                 = "AzureFirewallSubnet"
+    resource_group_name  = "alime-prod-rg"
+    virtual_network_name = "vnet-prod-hub"
+    address_prefixes     = ["10.50.1.0/24"]
+  }
+  agw = {
+    name                 = "agw-subnet"
+    resource_group_name  = "alime-prod-rg"
+    virtual_network_name = "vnet-prod-hub"
+    address_prefixes     = ["10.50.2.0/24"]
+  }
+  # spoke subnets
+  web = {
+    name                 = "web-subnet"
+    resource_group_name  = "alime-prod-rg"
+    virtual_network_name = "vnet-prod-spoke"
+    address_prefixes     = ["10.51.1.0/24"]
+  }
+  app = {
+    name                 = "app-subnet"
+    resource_group_name  = "alime-prod-rg"
+    virtual_network_name = "vnet-prod-spoke"
+    address_prefixes     = ["10.51.2.0/24"]
+  }
+  db = {
+    name                 = "db-subnet"
+    resource_group_name  = "alime-prod-rg"
+    virtual_network_name = "vnet-prod-spoke"
+    address_prefixes     = ["10.51.3.0/24"]
   }
 }

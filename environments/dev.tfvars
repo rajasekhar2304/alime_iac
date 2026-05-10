@@ -33,6 +33,7 @@ vnets = {
 }
 
 subnets = {
+  # hub subnets
   firewall = {
     name                 = "AzureFirewallSubnet"
     resource_group_name  = "alime-dev-rg"
@@ -45,6 +46,7 @@ subnets = {
     virtual_network_name = "vnet-dev-hub"
     address_prefixes     = ["10.48.2.0/24"]
   }
+  # spoke subnets
   web = {
     name                 = "web-subnet"
     resource_group_name  = "alime-dev-rg"
