@@ -11,6 +11,3 @@ variable "resource_groups" {
     tags     = optional(map(string), {})
   }))
 }
-variable "common_tags" {
-  type = map(string)
-}
