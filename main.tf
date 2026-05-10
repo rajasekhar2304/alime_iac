@@ -10,3 +10,9 @@ module "vnets" {
   common_tags = local.common_tags
   depends_on = [ module.resource_groups ]
 }
+
+module "subnets" {
+  source = "./modules/subnet"
+  subnets = var.subnets
+  depends_on = [ module.vnets ]
+}
