@@ -18,10 +18,10 @@ module "subnets" {
 }
 
 module "nsgs" {
-  source = "./modules/nsg"
+  source      = "./modules/nsg"
   nsgs        = var.nsgs
   common_tags = local.common_tags
-  depends_on = [module.subnets]
+  depends_on  = [module.subnets]
 }
 
 module "nsg_associations" {
@@ -29,7 +29,7 @@ module "nsg_associations" {
   nsg_associations = {
     for k, association in var.nsg_associations :
     k => {
-      subnet_id = module.subnets.subnet_ids[association.subnet_key]
+      subnet_id                 = module.subnets.subnet_ids[association.subnet_key]
       network_security_group_id = module.nsgs.nsg_ids[association.nsg_key]
     }
   }
@@ -40,7 +40,7 @@ module "nsg_associations" {
 }
 
 module "nsg_rules" {
-  source = "./modules/nsg-rules"
+  source    = "./modules/nsg-rules"
   nsg_rules = var.nsg_rules
   depends_on = [
     module.nsgs,
