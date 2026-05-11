@@ -101,3 +101,77 @@ nsgs = {
     }
   }
 }
+
+nsg_associations = {
+  agw = {
+    subnet_key = "agw"
+    nsg_key    = "agw"
+  }
+  web = {
+    subnet_key = "web"
+    nsg_key    = "web"
+  }
+  app = {
+    subnet_key = "app"
+    nsg_key    = "app"
+  }
+  db = {
+    subnet_key = "db"
+    nsg_key    = "db"
+  }
+}
+
+nsg_rules = {
+  agw-gateway-manager = {
+    name                        = "allow-gateway-manager"
+    priority                    = 100
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "Tcp"
+    source_port_range           = "*"
+    destination_port_range      = "65200-65535"
+    source_address_prefix       = "GatewayManager"
+    destination_address_prefix  = "*"
+    resource_group_name         = "alime-prod-rg"
+    network_security_group_name = "nsg-prod-agw"
+  }
+  agw-azure-lb = {
+    name                        = "allow-azure-lb"
+    priority                    = 110
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "*"
+    source_port_range           = "*"
+    destination_port_range      = "*"
+    source_address_prefix       = "AzureLoadBalancer"
+    destination_address_prefix  = "*"
+    resource_group_name         = "alime-prod-rg"
+    network_security_group_name = "nsg-prod-agw"
+  }
+  agw-http = {
+    name                        = "allow-http"
+    priority                    = 120
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "Tcp"
+    source_port_range           = "*"
+    destination_port_range      = "80"
+    source_address_prefix       = "Internet"
+    destination_address_prefix  = "*"
+    resource_group_name         = "alime-prod-rg"
+    network_security_group_name = "nsg-prod-agw"
+  }
+  agw-https = {
+    name                        = "allow-https"
+    priority                    = 130
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "Tcp"
+    source_port_range           = "*"
+    destination_port_range      = "443"
+    source_address_prefix       = "Internet"
+    destination_address_prefix  = "*"
+    resource_group_name         = "alime-prod-rg"
+    network_security_group_name = "nsg-prod-agw"
+  }
+}
