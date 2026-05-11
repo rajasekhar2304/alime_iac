@@ -64,3 +64,38 @@ subnets = {
     address_prefixes     = ["10.53.3.0/24"]
   }
 }
+
+nsgs = {
+  agw = {
+    name                = "nsg-uat-agw"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    tags = {
+      purpose = "application-gateway"
+    }
+  }
+  web = {
+    name                = "nsg-uat-web"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    tags = {
+      purpose = "web-tier"
+    }
+  }
+  app = {
+    name                = "nsg-uat-app"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    tags = {
+      purpose = "app-tier"
+    }
+  }
+  db = {
+    name                = "nsg-uat-db"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    tags = {
+      purpose = "db-tier"
+    }
+  }
+}

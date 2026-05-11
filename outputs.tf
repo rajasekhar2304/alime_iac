@@ -32,3 +32,22 @@ output "subnet_names" {
 output "subnet_address_prefixes" {
   value = module.subnets.subnet_address_prefixes
 }
+
+# NSG outputs #
+output "nsg_ids" {
+  value = module.nsgs.nsg_ids
+}
+
+output "nsg_names" {
+  value = module.nsgs.nsg_names
+}
+
+# NSG association outputs #
+output "nsg_association_ids" {
+  value = module.nsg_associations.association_ids
+}
+
+# NSG rule outputs #
+output "nsg_rule_ids" {
+  value = module.nsg_rules.nsg_rule_ids
+}

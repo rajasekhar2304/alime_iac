@@ -66,3 +66,38 @@ subnets = {
     address_prefixes     = ["10.51.3.0/24"]
   }
 }
+
+nsgs = {
+  agw = {
+    name                = "nsg-prod-agw"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    tags = {
+      purpose = "application-gateway"
+    }
+  }
+  web = {
+    name                = "nsg-prod-web"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    tags = {
+      purpose = "web-tier"
+    }
+  }
+  app = {
+    name                = "nsg-prod-app"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    tags = {
+      purpose = "app-tier"
+    }
+  }
+  db = {
+    name                = "nsg-prod-db"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    tags = {
+      purpose = "db-tier"
+    }
+  }
+}

@@ -3,4 +3,5 @@
 > terraform fmt -recursive
 > terraform plan -var-file=environments/dev.tfvars
 > terraform apply -var-file=environments/dev.tfvars
+> terraform init -reconfigure -backend-config=./backend/uat.hcl
 
