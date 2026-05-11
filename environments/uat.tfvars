@@ -173,3 +173,18 @@ nsg_rules = {
     network_security_group_name = "nsg-uat-agw"
   }
 }
+
+firewalls = {
+  hub = {
+    name                = "fw-uat-hub"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    sku_name = "AZFW_VNet"
+    sku_tier = "Standard"
+    subnet_key = "firewall"
+    public_ip_name = "pip-uat-firewall"
+    tags = {
+      purpose = "hub-firewall"
+    }
+  }
+}

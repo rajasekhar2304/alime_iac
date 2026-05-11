@@ -175,3 +175,18 @@ nsg_rules = {
     network_security_group_name = "nsg-dev-agw"
   }
 }
+
+firewalls = {
+  hub = {
+    name                = "fw-dev-hub"
+    location            = "Central India"
+    resource_group_name = "alime-dev-rg"
+    sku_name = "AZFW_VNet"
+    sku_tier = "Standard"
+    subnet_key = "firewall"
+    public_ip_name = "pip-dev-firewall"
+    tags = {
+      purpose = "hub-firewall"
+    }
+  }
+}

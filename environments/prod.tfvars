@@ -175,3 +175,18 @@ nsg_rules = {
     network_security_group_name = "nsg-prod-agw"
   }
 }
+
+firewalls = {
+  hub = {
+    name                = "fw-prod-hub"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    sku_name = "AZFW_VNet"
+    sku_tier = "Standard"
+    subnet_key = "firewall"
+    public_ip_name = "pip-prod-firewall"
+    tags = {
+      purpose = "hub-firewall"
+    }
+  }
+}

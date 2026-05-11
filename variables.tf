@@ -71,3 +71,17 @@ variable "nsg_rules" {
     network_security_group_name = string
   }))
 }
+
+variable "firewalls" {
+  description = "Map of Azure Firewalls"
+  type = map(object({
+    name                = string
+    location            = string
+    resource_group_name = string
+    sku_name = string
+    sku_tier = string
+    subnet_key = string
+    public_ip_name = string
+    tags = optional(map(string), {})
+  }))
+}

@@ -51,3 +51,12 @@ output "nsg_association_ids" {
 output "nsg_rule_ids" {
   value = module.nsg_rules.nsg_rule_ids
 }
+
+# Firewall outputs #
+output "firewall_private_ips" {
+  value = module.firewalls.firewall_private_ips
+}
+
+output "firewall_public_ips" {
+  value = module.firewalls.firewall_public_ips
+}

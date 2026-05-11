@@ -47,3 +47,17 @@ module "nsg_rules" {
     module.nsg_associations
   ]
 }
+
+module "firewalls" {
+  source = "./modules/firewall"
+  firewalls = {
+    for k, fw in var.firewalls :
+    k => merge(fw, {
+      subnet_id = module.subnets.subnet_ids[fw.subnet_key]
+    })
+  }
+  common_tags = local.common_tags
+  depends_on = [
+    module.subnets
+  ]
+}
