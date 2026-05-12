@@ -8,6 +8,7 @@ variable "firewalls" {
     sku_tier            = string
     subnet_id           = string
     public_ip_name      = string
+    firewall_policy_id  = optional(string)
     tags                = optional(map(string), {})
   }))
 }

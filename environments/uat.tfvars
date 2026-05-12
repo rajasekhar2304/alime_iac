@@ -188,3 +188,22 @@ firewalls = {
     }
   }
 }
+
+route_tables = {
+  agw = {
+    name                = "rt-uat-agw"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    tags = {
+      purpose = "agw-routing"
+    }
+  }
+  spoke = {
+    name                = "rt-uat-spoke"
+    location            = "Central India"
+    resource_group_name = "alime-uat-rg"
+    tags = {
+      purpose = "spoke-routing"
+    }
+  }
+}

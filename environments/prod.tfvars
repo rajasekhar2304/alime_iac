@@ -190,3 +190,22 @@ firewalls = {
     }
   }
 }
+
+route_tables = {
+  agw = {
+    name                = "rt-prod-agw"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    tags = {
+      purpose = "agw-routing"
+    }
+  }
+  spoke = {
+    name                = "rt-prod-spoke"
+    location            = "Central India"
+    resource_group_name = "alime-prod-rg"
+    tags = {
+      purpose = "spoke-routing"
+    }
+  }
+}
