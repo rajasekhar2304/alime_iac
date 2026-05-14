@@ -38,6 +38,9 @@ module "nsg_associations" {
 module "nsg_rules" {
   source    = "./modules/nsg-rules"
   nsg_rules = var.nsg_rules
+  depends_on = [
+    module.nsgs
+  ]
 }
 
 module "firewall_policies" {
