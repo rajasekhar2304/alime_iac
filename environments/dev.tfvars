@@ -419,49 +419,49 @@ application_gateways = {
     name                = "agw-dev"
     location            = "Central India"
     resource_group_name = "alime-dev-rg"
-    subnet_key = "agw"
-    public_ip_key = "agw"
+    subnet_key          = "agw"
+    public_ip_key       = "agw"
     sku = {
       name     = "Standard_v2"
       tier     = "Standard_v2"
       capacity = 2
     }
-    frontend_port = 80
+    frontend_port                  = 80
     frontend_ip_configuration_name = "frontend-ip-config"
-    frontend_port_name = "frontend-port"
-    backend_address_pool_name = "backend-pool"
+    frontend_port_name             = "frontend-port"
+    backend_address_pool_name      = "backend-pool"
     backend_addresses = [
       {
         ip_address = "10.49.1.10"
       }
     ]
     backend_http_settings = {
-      name = "backend-http-settings"
+      name                  = "backend-http-settings"
       cookie_based_affinity = "Disabled"
-      path = "/"
-      port = 80
-      protocol = "Http"
-      request_timeout = 30
-      probe_name = "health-probe"
+      path                  = "/"
+      port                  = 80
+      protocol              = "Http"
+      request_timeout       = 30
+      probe_name            = "health-probe"
     }
     probe = {
-      name = "health-probe"
-      protocol = "Http"
-      path = "/"
-      interval = 30
-      timeout = 30
-      unhealthy_threshold = 3
+      name                                      = "health-probe"
+      protocol                                  = "Http"
+      path                                      = "/"
+      interval                                  = 30
+      timeout                                   = 30
+      unhealthy_threshold                       = 3
       pick_host_name_from_backend_http_settings = true
     }
     http_listener = {
-      name = "http-listener"
-      protocol = "Http"
+      name        = "http-listener"
+      protocol    = "Http"
       require_sni = false
     }
     request_routing_rule = {
-      name = "routing-rule"
+      name      = "routing-rule"
       rule_type = "Basic"
-      priority = 100
+      priority  = 100
     }
     tags = {
       purpose = "application-gateway"

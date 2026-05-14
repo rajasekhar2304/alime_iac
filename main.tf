@@ -167,7 +167,7 @@ module "application_gateways" {
   application_gateways = {
     for k, agw in var.application_gateways :
     k => merge(agw, {
-      subnet_id = module.subnets.subnet_ids[agw.subnet_key]
+      subnet_id    = module.subnets.subnet_ids[agw.subnet_key]
       public_ip_id = module.public_ips.public_ip_ids[agw.public_ip_key]
     })
   }

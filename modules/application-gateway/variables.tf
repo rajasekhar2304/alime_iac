@@ -4,16 +4,16 @@ variable "application_gateways" {
     name                = string
     location            = string
     resource_group_name = string
-    subnet_id = string
+    subnet_id           = string
     sku = object({
       name     = string
       tier     = string
       capacity = number
     })
-    frontend_port = number
+    frontend_port                  = number
     frontend_ip_configuration_name = string
     frontend_port_name             = string
-    backend_address_pool_name = string
+    backend_address_pool_name      = string
     backend_addresses = list(object({
       ip_address = string
     }))
@@ -36,18 +36,18 @@ variable "application_gateways" {
       pick_host_name_from_backend_http_settings = bool
     })
     http_listener = object({
-      name                           = string
-      protocol                       = string
-      require_sni                    = bool
-      host_name                      = optional(string)
+      name        = string
+      protocol    = string
+      require_sni = bool
+      host_name   = optional(string)
     })
     request_routing_rule = object({
-      name                       = string
-      rule_type                  = string
-      priority                   = number
+      name      = string
+      rule_type = string
+      priority  = number
     })
     public_ip_id = string
-    tags = optional(map(string), {})
+    tags         = optional(map(string), {})
   }))
 }
 
