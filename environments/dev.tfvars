@@ -255,11 +255,6 @@ route_table_associations = {
     route_table_key = "spoke"
   }
 
-  web = {
-    subnet_key      = "web"
-    route_table_key = "spoke"
-  }
-
   db = {
     subnet_key      = "db"
     route_table_key = "spoke"
