@@ -60,7 +60,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "rcg" {
           name                = rule.value.name
           protocols           = rule.value.protocols
           source_addresses    = rule.value.source_addresses
-          destination_address = rule.value.destination_address
+          destination_address = var.firewall_public_ip
           destination_ports   = rule.value.destination_ports
           translated_address  = rule.value.translated_address
           translated_port     = rule.value.translated_port

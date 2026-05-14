@@ -1,3 +1,7 @@
+variable "firewall_public_ip" {
+  type = string
+}
+
 variable "firewall_rule_collection_groups" {
   description = "Map of Firewall Rule Collection Groups"
   type = map(object({
