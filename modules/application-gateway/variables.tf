@@ -34,6 +34,7 @@ variable "application_gateways" {
       timeout                                   = number
       unhealthy_threshold                       = number
       pick_host_name_from_backend_http_settings = bool
+      host = optional(string)
     })
     http_listener = object({
       name        = string

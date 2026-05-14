@@ -483,6 +483,7 @@ application_gateways = {
       timeout                                   = 30
       unhealthy_threshold                       = 3
       pick_host_name_from_backend_http_settings = false
+      host                                      = "127.0.0.1"
     }
     http_listener = {
       name        = "http-listener"

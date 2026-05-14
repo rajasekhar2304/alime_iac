@@ -45,6 +45,7 @@ resource "azurerm_application_gateway" "agw" {
     timeout                                   = each.value.probe.timeout
     unhealthy_threshold                       = each.value.probe.unhealthy_threshold
     pick_host_name_from_backend_http_settings = each.value.probe.pick_host_name_from_backend_http_settings
+    host = try(each.value.probe.host, null)
     match {
       status_code = [
         "200-399"
