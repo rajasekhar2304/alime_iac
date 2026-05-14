@@ -479,7 +479,7 @@ vm_extensions = {
     auto_upgrade_minor_version = true
     settings = <<SETTINGS
 {
-  "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -name Web-Server -IncludeManagementTools; echo '<h1>Welcome to Alime Web Server</h1>' > C:\\\\inetpub\\\\wwwroot\\\\index.html"
+  "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature Web-Server -IncludeManagementTools; Set-Content -Path 'C:\\\\inetpub\\\\wwwroot\\\\index.html' -Value '<h1>Welcome to Alime Web Server</h1>'"
 }
 SETTINGS
   }
