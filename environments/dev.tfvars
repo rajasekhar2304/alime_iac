@@ -250,18 +250,16 @@ routes = {
 }
 
 route_table_associations = {
-  agw = {
-    subnet_key      = "agw"
-    route_table_key = "agw"
-  }
-  web = {
-    subnet_key      = "web"
-    route_table_key = "spoke"
-  }
   app = {
     subnet_key      = "app"
     route_table_key = "spoke"
   }
+
+  web = {
+    subnet_key      = "web"
+    route_table_key = "spoke"
+  }
+
   db = {
     subnet_key      = "db"
     route_table_key = "spoke"
