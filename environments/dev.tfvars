@@ -186,7 +186,7 @@ nsg_rules = {
     destination_address_prefix  = "*"
     resource_group_name         = "alime-dev-rg"
     network_security_group_name = "nsg-dev-web"
-  }  
+  }
 }
 
 firewalls = {
