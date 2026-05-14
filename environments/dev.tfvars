@@ -227,6 +227,13 @@ routes = {
     next_hop_type       = "VirtualAppliance"
     firewall_key        = "hub"
   }
+  agw-return = {
+    name                = "agw-return"
+    resource_group_name = "alime-dev-rg"
+    route_table_key     = "spoke"
+    address_prefix      = "10.48.2.0/24"
+    next_hop_type       = "VnetLocal"
+  }  
 }
 
 route_table_associations = {
