@@ -152,3 +152,12 @@ module "windows_vms" {
   }
   common_tags = local.common_tags
 }
+
+module "public_ips" {
+  source = "./modules/public-ip"
+  public_ips = var.public_ips
+  common_tags = local.common_tags
+  depends_on = [
+    module.resource_groups
+  ]
+}

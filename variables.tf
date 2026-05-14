@@ -162,3 +162,7 @@ variable "nics" {
 variable "windows_vms" {
   type = any
 }
+
+variable "public_ips" {
+  type = any
+}

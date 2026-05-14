@@ -399,3 +399,17 @@ windows_vms = {
     }
   }
 }
+
+public_ips = {
+  agw = {
+    name                = "pip-dev-agw"
+    location            = "Central India"
+    resource_group_name = "alime-dev-rg"
+    allocation_method = "Static"
+    sku = "Standard"
+    domain_name_label = "alime-dev-agw"
+    tags = {
+      purpose = "application-gateway"
+    }
+  }
+}
