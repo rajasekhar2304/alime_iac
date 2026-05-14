@@ -174,6 +174,19 @@ nsg_rules = {
     resource_group_name         = "alime-dev-rg"
     network_security_group_name = "nsg-dev-agw"
   }
+  web-http-from-agw = {
+    name                        = "allow-http-from-agw"
+    priority                    = 100
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "Tcp"
+    source_port_range           = "*"
+    destination_port_range      = "80"
+    source_address_prefix       = "10.48.2.0/24"
+    destination_address_prefix  = "*"
+    resource_group_name         = "alime-dev-rg"
+    network_security_group_name = "nsg-dev-web"
+  }  
 }
 
 firewalls = {
