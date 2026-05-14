@@ -21,7 +21,6 @@ module "nsgs" {
   source      = "./modules/nsg"
   nsgs        = var.nsgs
   common_tags = local.common_tags
-  depends_on  = [module.subnets]
 }
 
 module "nsg_associations" {
@@ -33,19 +32,17 @@ module "nsg_associations" {
       network_security_group_id = module.nsgs.nsg_ids[association.nsg_key]
     }
   }
-  depends_on = [
-    module.subnets,
-    module.nsgs
-  ]
 }
 
 module "nsg_rules" {
   source    = "./modules/nsg-rules"
   nsg_rules = var.nsg_rules
-  depends_on = [
-    module.nsgs,
-    module.nsg_associations
-  ]
+}
+
+module "firewall_policies" {
+  source            = "./modules/firewall-policy"
+  firewall_policies = var.firewall_policies
+  common_tags       = local.common_tags
 }
 
 module "firewalls" {
@@ -58,19 +55,12 @@ module "firewalls" {
     })
   }
   common_tags = local.common_tags
-  depends_on = [
-    module.subnets,
-    module.firewall_policies
-  ]
 }
 
 module "route_tables" {
   source       = "./modules/route-table"
   route_tables = var.route_tables
   common_tags  = local.common_tags
-  depends_on = [
-    module.subnets
-  ]
 }
 
 module "routes" {
@@ -90,11 +80,8 @@ module "routes" {
       )
     }
   }
-  depends_on = [
-    module.route_tables,
-    module.firewalls
-  ]
 }
+
 module "route_table_associations" {
   source = "./modules/route-table-association"
   route_table_associations = {
@@ -104,9 +91,6 @@ module "route_table_associations" {
       route_table_id = module.route_tables.route_table_ids[association.route_table_key]
     }
   }
-  depends_on = [
-    module.routes
-  ]
 }
 
 module "vnet_peerings" {
@@ -124,21 +108,6 @@ module "vnet_peerings" {
       use_remote_gateways          = peering.use_remote_gateways
     }
   }
-  depends_on = [
-    module.vnets,
-    module.firewalls,
-    module.routes,
-    module.route_table_associations
-  ]
-}
-
-module "firewall_policies" {
-  source            = "./modules/firewall-policy"
-  firewall_policies = var.firewall_policies
-  common_tags       = local.common_tags
-  depends_on = [
-    module.routes
-  ]  
 }
 
 module "firewall_rule_collection_groups" {
@@ -149,9 +118,6 @@ module "firewall_rule_collection_groups" {
       firewall_policy_id = module.firewall_policies.firewall_policy_ids[rcg.firewall_policy_key]
     })
   }
-  depends_on = [
-    module.firewall_policies
-  ]
 }
 
 module "nics" {
@@ -163,9 +129,4 @@ module "nics" {
     })
   }
   common_tags = local.common_tags
-  depends_on = [
-    module.subnets,
-    module.route_table_associations,
-    module.nsg_associations
-  ]
 }
