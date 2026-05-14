@@ -468,6 +468,7 @@ application_gateways = {
     }
   }
 }
+
 vm_extensions = {
   web-iis = {
     name                       = "install-iis"
@@ -476,8 +477,10 @@ vm_extensions = {
     type                       = "CustomScriptExtension"
     type_handler_version       = "1.10"
     auto_upgrade_minor_version = true
-    settings = jsonencode({
-      commandToExecute = "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -name Web-Server -IncludeManagementTools; echo '<h1>Welcome to Alime Web Server</h1>' > C:\\inetpub\\wwwroot\\index.html"
-    })
+    settings = <<SETTINGS
+{
+  "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -name Web-Server -IncludeManagementTools; echo '<h1>Welcome to Alime Web Server</h1>' > C:\\\\inetpub\\\\wwwroot\\\\index.html"
+}
+SETTINGS
   }
 }
