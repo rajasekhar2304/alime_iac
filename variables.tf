@@ -158,3 +158,7 @@ variable "nics" {
     tags                          = optional(map(string), {})
   }))
 }
+
+variable "windows_vms" {
+  type = any
+}

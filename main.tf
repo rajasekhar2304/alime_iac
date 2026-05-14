@@ -137,3 +137,18 @@ module "nics" {
   common_tags = local.common_tags
   depends_on  = [module.resource_groups]
 }
+
+module "windows_vms" {
+  source = "./modules/windows-vm"
+  windows_vms = {
+    for k, vm in var.windows_vms :
+    k => merge(vm, {
+      network_interface_ids = [
+        module.nics.nic_ids[vm.nic_key]
+      ]
+      admin_username = data.azurerm_key_vault_secret.vm_admin_username.value
+      admin_password = data.azurerm_key_vault_secret.vm_admin_password.value
+    })
+  }
+  common_tags = local.common_tags
+}

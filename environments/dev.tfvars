@@ -376,3 +376,26 @@ nics = {
     }
   }
 }
+
+windows_vms = {
+  web = {
+    name                = "vm-dev-web"
+    location            = "Central India"
+    resource_group_name = "alime-dev-rg"
+    size = "Standard_B2s"
+    nic_key = "web"
+    os_disk = {
+      caching              = "ReadWrite"
+      storage_account_type = "Standard_LRS"
+    }
+    source_image_reference = {
+      publisher = "MicrosoftWindowsServer"
+      offer     = "WindowsServer"
+      sku       = "2022-datacenter-azure-edition"
+      version   = "latest"
+    }
+    tags = {
+      role = "web"
+    }
+  }
+}
