@@ -21,6 +21,7 @@ module "nsgs" {
   source      = "./modules/nsg"
   nsgs        = var.nsgs
   common_tags = local.common_tags
+  depends_on  = [module.resource_groups]
 }
 
 module "nsg_associations" {
@@ -43,6 +44,7 @@ module "firewall_policies" {
   source            = "./modules/firewall-policy"
   firewall_policies = var.firewall_policies
   common_tags       = local.common_tags
+  depends_on        = [module.resource_groups]
 }
 
 module "firewalls" {
@@ -61,6 +63,7 @@ module "route_tables" {
   source       = "./modules/route-table"
   route_tables = var.route_tables
   common_tags  = local.common_tags
+  depends_on   = [module.resource_groups]
 }
 
 module "routes" {
@@ -129,4 +132,5 @@ module "nics" {
     })
   }
   common_tags = local.common_tags
+  depends_on  = [module.resource_groups]
 }
