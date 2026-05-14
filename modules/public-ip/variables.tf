@@ -4,10 +4,10 @@ variable "public_ips" {
     name                = string
     location            = string
     resource_group_name = string
-    allocation_method = string
-    sku               = string
-    domain_name_label = optional(string)
-    tags = optional(map(string), {})
+    allocation_method   = string
+    sku                 = string
+    domain_name_label   = optional(string)
+    tags                = optional(map(string), {})
   }))
 }
 
