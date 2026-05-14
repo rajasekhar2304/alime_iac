@@ -212,67 +212,67 @@ route_tables = {
 
 routes = {
   agw-to-spoke = {
-    name = "agw-to-spoke"
+    name                = "agw-to-spoke"
     resource_group_name = "alime-dev-rg"
-    route_table_key = "agw"
-    address_prefix = "10.49.0.0/16"
-    next_hop_type = "VirtualAppliance"
-    firewall_key = "hub"
+    route_table_key     = "agw"
+    address_prefix      = "10.49.0.0/16"
+    next_hop_type       = "VirtualAppliance"
+    firewall_key        = "hub"
   }
   spoke-default = {
-    name = "spoke-default"
+    name                = "spoke-default"
     resource_group_name = "alime-dev-rg"
-    route_table_key = "spoke"
-    address_prefix = "0.0.0.0/0"
-    next_hop_type = "VirtualAppliance"
-    firewall_key = "hub"
+    route_table_key     = "spoke"
+    address_prefix      = "0.0.0.0/0"
+    next_hop_type       = "VirtualAppliance"
+    firewall_key        = "hub"
   }
 }
 
 route_table_associations = {
   agw = {
-    subnet_key = "agw"
+    subnet_key      = "agw"
     route_table_key = "agw"
   }
   web = {
-    subnet_key = "web"
+    subnet_key      = "web"
     route_table_key = "spoke"
   }
   app = {
-    subnet_key = "app"
+    subnet_key      = "app"
     route_table_key = "spoke"
   }
   db = {
-    subnet_key = "db"
+    subnet_key      = "db"
     route_table_key = "spoke"
   }
 }
 
 peerings = {
   hub-to-spoke = {
-    name = "peer-hub-to-spoke"
-    resource_group_name = "alime-dev-rg"
-    vnet_key = "hub"
-    remote_vnet_key = "spoke"
+    name                         = "peer-hub-to-spoke"
+    resource_group_name          = "alime-dev-rg"
+    vnet_key                     = "hub"
+    remote_vnet_key              = "spoke"
     allow_virtual_network_access = true
-    allow_forwarded_traffic = true
+    allow_forwarded_traffic      = true
   }
   spoke-to-hub = {
-    name = "peer-spoke-to-hub"
-    resource_group_name = "alime-dev-rg"
-    vnet_key = "spoke"
-    remote_vnet_key = "hub"
+    name                         = "peer-spoke-to-hub"
+    resource_group_name          = "alime-dev-rg"
+    vnet_key                     = "spoke"
+    remote_vnet_key              = "hub"
     allow_virtual_network_access = true
-    allow_forwarded_traffic = true
+    allow_forwarded_traffic      = true
   }
 }
 
 firewall_policies = {
   hub = {
-    name                = "fwpolicy-dev-hub"
-    location            = "Central India"
-    resource_group_name = "alime-dev-rg"
-    sku = "Standard"
+    name                     = "fwpolicy-dev-hub"
+    location                 = "Central India"
+    resource_group_name      = "alime-dev-rg"
+    sku                      = "Standard"
     threat_intelligence_mode = "Alert"
     tags = {
       purpose = "hub-firewall-policy"
@@ -282,9 +282,9 @@ firewall_policies = {
 
 firewall_rule_collection_groups = {
   hub = {
-    name = "fwrcg-dev-hub"
+    name                = "fwrcg-dev-hub"
     firewall_policy_key = "hub"
-    priority = 100
+    priority            = 100
     network_rule_collections = [
       {
         name     = "network-rules"
@@ -292,19 +292,19 @@ firewall_rule_collection_groups = {
         action   = "Allow"
         rules = [
           {
-            name = "allow-web-outbound"
-            protocols = ["TCP"]
-            source_addresses = ["10.49.1.0/24"]
+            name                  = "allow-web-outbound"
+            protocols             = ["TCP"]
+            source_addresses      = ["10.49.1.0/24"]
             destination_addresses = ["*"]
-            destination_ports = ["80", "443"]
+            destination_ports     = ["80", "443"]
           },
 
           {
-            name = "allow-app-to-db"
-            protocols = ["TCP"]
-            source_addresses = ["10.49.2.0/24"]
+            name                  = "allow-app-to-db"
+            protocols             = ["TCP"]
+            source_addresses      = ["10.49.2.0/24"]
             destination_addresses = ["10.49.3.0/24"]
-            destination_ports = ["1433"]
+            destination_ports     = ["1433"]
           }
         ]
       }
@@ -317,7 +317,7 @@ firewall_rule_collection_groups = {
         action   = "Allow"
         rules = [
           {
-            name = "allow-windows-update"
+            name             = "allow-windows-update"
             source_addresses = ["10.49.1.0/24"]
             destination_fqdns = [
               "*.windowsupdate.com"
@@ -341,36 +341,36 @@ firewall_rule_collection_groups = {
 
 nics = {
   web = {
-    name                = "nic-dev-web"
-    location            = "Central India"
-    resource_group_name = "alime-dev-rg"
-    subnet_key = "web"
+    name                          = "nic-dev-web"
+    location                      = "Central India"
+    resource_group_name           = "alime-dev-rg"
+    subnet_key                    = "web"
     private_ip_address_allocation = "Static"
-    private_ip_address = "10.49.1.10"
+    private_ip_address            = "10.49.1.10"
     tags = {
       purpose = "web-tier"
     }
   }
 
   app = {
-    name                = "nic-dev-app"
-    location            = "Central India"
-    resource_group_name = "alime-dev-rg"
-    subnet_key = "app"
+    name                          = "nic-dev-app"
+    location                      = "Central India"
+    resource_group_name           = "alime-dev-rg"
+    subnet_key                    = "app"
     private_ip_address_allocation = "Static"
-    private_ip_address = "10.49.2.10"
+    private_ip_address            = "10.49.2.10"
     tags = {
       purpose = "app-tier"
     }
   }
 
   db = {
-    name                = "nic-dev-db"
-    location            = "Central India"
-    resource_group_name = "alime-dev-rg"
-    subnet_key = "db"
+    name                          = "nic-dev-db"
+    location                      = "Central India"
+    resource_group_name           = "alime-dev-rg"
+    subnet_key                    = "db"
     private_ip_address_allocation = "Static"
-    private_ip_address = "10.49.3.10"
+    private_ip_address            = "10.49.3.10"
     tags = {
       purpose = "db-tier"
     }

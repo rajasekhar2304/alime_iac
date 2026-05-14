@@ -92,26 +92,26 @@ variable "route_tables" {
     name                = string
     location            = string
     resource_group_name = string
-    tags = optional(map(string), {})
+    tags                = optional(map(string), {})
   }))
 }
 
 variable "routes" {
   description = "Map of routes"
   type = map(object({
-    name = string
+    name                = string
     resource_group_name = string
-    route_table_key = string
-    address_prefix = string
-    next_hop_type = string
-    firewall_key = optional(string)
+    route_table_key     = string
+    address_prefix      = string
+    next_hop_type       = string
+    firewall_key        = optional(string)
   }))
 }
 
 variable "route_table_associations" {
   description = "Map of route table associations"
   type = map(object({
-    subnet_key = string
+    subnet_key      = string
     route_table_key = string
   }))
 }
@@ -119,42 +119,42 @@ variable "route_table_associations" {
 variable "peerings" {
   description = "Map of VNet peerings"
   type = map(object({
-    name = string
-    resource_group_name = string
-    vnet_key = string
-    remote_vnet_key = string
+    name                         = string
+    resource_group_name          = string
+    vnet_key                     = string
+    remote_vnet_key              = string
     allow_virtual_network_access = optional(bool, true)
-    allow_forwarded_traffic = optional(bool, true)
-    allow_gateway_transit = optional(bool, false)
-    use_remote_gateways = optional(bool, false)
+    allow_forwarded_traffic      = optional(bool, true)
+    allow_gateway_transit        = optional(bool, false)
+    use_remote_gateways          = optional(bool, false)
   }))
 }
 
 variable "firewall_policies" {
   description = "Map of Firewall Policies"
   type = map(object({
-    name                = string
-    location            = string
-    resource_group_name = string
-    sku = string
+    name                     = string
+    location                 = string
+    resource_group_name      = string
+    sku                      = string
     threat_intelligence_mode = optional(string, "Alert")
-    tags = optional(map(string), {})
+    tags                     = optional(map(string), {})
   }))
 }
 variable "firewall_rule_collection_groups" {
   description = "Map of Firewall Rule Collection Groups"
-  type = any
+  type        = any
 }
 
 variable "nics" {
   description = "Map of Network Interfaces"
   type = map(object({
-    name                = string
-    location            = string
-    resource_group_name = string
-    subnet_key = string
+    name                          = string
+    location                      = string
+    resource_group_name           = string
+    subnet_key                    = string
     private_ip_address_allocation = string
-    private_ip_address = optional(string)
-    tags = optional(map(string), {})
+    private_ip_address            = optional(string)
+    tags                          = optional(map(string), {})
   }))
 }

@@ -1,8 +1,8 @@
 resource "azurerm_firewall_policy_rule_collection_group" "rcg" {
-  for_each = var.firewall_rule_collection_groups
-  name = each.value.name
+  for_each           = var.firewall_rule_collection_groups
+  name               = each.value.name
   firewall_policy_id = each.value.firewall_policy_id
-  priority = each.value.priority
+  priority           = each.value.priority
   dynamic "network_rule_collection" {
     for_each = each.value.network_rule_collections
     content {
@@ -12,11 +12,11 @@ resource "azurerm_firewall_policy_rule_collection_group" "rcg" {
       dynamic "rule" {
         for_each = network_rule_collection.value.rules
         content {
-          name = rule.value.name
-          protocols = rule.value.protocols
-          source_addresses = rule.value.source_addresses
+          name                  = rule.value.name
+          protocols             = rule.value.protocols
+          source_addresses      = rule.value.source_addresses
           destination_addresses = rule.value.destination_addresses
-          destination_ports = rule.value.destination_ports
+          destination_ports     = rule.value.destination_ports
         }
       }
     }
@@ -31,8 +31,8 @@ resource "azurerm_firewall_policy_rule_collection_group" "rcg" {
       dynamic "rule" {
         for_each = application_rule_collection.value.rules
         content {
-          name = rule.value.name
-          source_addresses = rule.value.source_addresses
+          name              = rule.value.name
+          source_addresses  = rule.value.source_addresses
           destination_fqdns = rule.value.destination_fqdns
           dynamic "protocols" {
             for_each = rule.value.protocols

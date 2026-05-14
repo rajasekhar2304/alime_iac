@@ -3,17 +3,17 @@ variable "firewall_rule_collection_groups" {
   type = map(object({
     name               = string
     firewall_policy_id = string
-    priority = number
+    priority           = number
     network_rule_collections = optional(list(object({
       name     = string
       priority = number
       action   = string
       rules = list(object({
-        name = string
-        protocols = list(string)
-        source_addresses = list(string)
+        name                  = string
+        protocols             = list(string)
+        source_addresses      = list(string)
         destination_addresses = list(string)
-        destination_ports = list(string)
+        destination_ports     = list(string)
       }))
     })), [])
     application_rule_collections = optional(list(object({
@@ -21,8 +21,8 @@ variable "firewall_rule_collection_groups" {
       priority = number
       action   = string
       rules = list(object({
-        name = string
-        source_addresses = list(string)
+        name              = string
+        source_addresses  = list(string)
         destination_fqdns = list(string)
         protocols = list(object({
           type = string
