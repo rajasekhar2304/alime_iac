@@ -20,23 +20,11 @@ The infrastructure is designed to follow enterprise standards with:
 
 ## Inbound Web Flow
 
-Internet
-↓
-AGW Public IP
-↓
-AGW Backend Pool
-↓
-Private IIS VM
+Internet --> AGW Public IP --> AGW Backend Pool --> Private IIS VM
 
 ## RDP Flow
 
-Internet
-↓
-Firewall Public IP
-↓
-DNAT Rule
-↓
-Private VM
+Internet --> Firewall Public IP --> DNAT Rule --> Private VM
 
 # Hub-Spoke Network Design
 
