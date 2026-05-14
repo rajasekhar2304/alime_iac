@@ -31,23 +31,23 @@ variable "firewall_rule_collection_groups" {
       }))
     })), [])
     nat_rule_collections = optional(list(object({
-    
+
       name     = string
       priority = number
       action   = string
-    
+
       rules = list(object({
-      
-        name                = string
-        protocols           = list(string)
-        source_addresses    = list(string)
-    
+
+        name             = string
+        protocols        = list(string)
+        source_addresses = list(string)
+
         destination_address = string
         destination_ports   = list(string)
-    
-        translated_address  = string
-        translated_port     = string
+
+        translated_address = string
+        translated_port    = string
       }))
-    })), [])    
+    })), [])
   }))
 }

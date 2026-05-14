@@ -349,13 +349,13 @@ firewall_rule_collection_groups = {
 
         rules = [
           {
-            name                  = "rdp-web-vm"
-            protocols             = ["TCP"]
-            source_addresses      = ["*"]
-            destination_address   = "20.219.136.193"
-            destination_ports     = ["3389"]
-            translated_address    = "10.49.1.10"
-            translated_port       = "3389"
+            name                = "rdp-web-vm"
+            protocols           = ["TCP"]
+            source_addresses    = ["*"]
+            destination_address = "20.219.136.193"
+            destination_ports   = ["3389"]
+            translated_address  = "10.49.1.10"
+            translated_port     = "3389"
           }
         ]
       }
@@ -501,7 +501,7 @@ vm_extensions = {
     type                       = "CustomScriptExtension"
     type_handler_version       = "1.10"
     auto_upgrade_minor_version = true
-    settings = <<SETTINGS
+    settings                   = <<SETTINGS
 {
   "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -Command \"Install-WindowsFeature -Name Web-Server -IncludeManagementTools; Set-Content -Path 'C:\\\\inetpub\\\\wwwroot\\\\index.html' -Value '<h1>Welcome to Alime Web Server</h1>'\""
 }
