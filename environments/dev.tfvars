@@ -285,11 +285,13 @@ firewall_rule_collection_groups = {
     name                = "fwrcg-dev-hub"
     firewall_policy_key = "hub"
     priority            = 100
+
     network_rule_collections = [
       {
         name     = "network-rules"
         priority = 100
         action   = "Allow"
+
         rules = [
           {
             name                  = "allow-web-outbound"
@@ -298,7 +300,6 @@ firewall_rule_collection_groups = {
             destination_addresses = ["*"]
             destination_ports     = ["80", "443"]
           },
-
           {
             name                  = "allow-app-to-db"
             protocols             = ["TCP"]
@@ -315,13 +316,16 @@ firewall_rule_collection_groups = {
         name     = "application-rules"
         priority = 200
         action   = "Allow"
+
         rules = [
           {
             name             = "allow-windows-update"
             source_addresses = ["10.49.1.0/24"]
+
             destination_fqdns = [
               "*.windowsupdate.com"
             ]
+
             protocols = [
               {
                 type = "Http"
@@ -332,6 +336,26 @@ firewall_rule_collection_groups = {
                 port = 443
               }
             ]
+          }
+        ]
+      }
+    ]
+
+    nat_rule_collections = [
+      {
+        name     = "rdp-nat"
+        priority = 300
+        action   = "Dnat"
+
+        rules = [
+          {
+            name                  = "rdp-web-vm"
+            protocols             = ["TCP"]
+            source_addresses      = ["*"]
+            destination_address   = "20.219.136.193"
+            destination_ports     = ["3389"]
+            translated_address    = "10.49.1.10"
+            translated_port       = "3389"
           }
         ]
       }
