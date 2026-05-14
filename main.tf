@@ -115,11 +115,11 @@ module "routes" {
   routes = {
     for k, route in var.routes :
     k => {
-      name                     = route.name
-      resource_group_name      = route.resource_group_name
-      route_table_name         = module.route_tables.route_table_names[route.route_table_key]
-      address_prefix           = route.address_prefix
-      next_hop_type            = route.next_hop_type
+      name                = route.name
+      resource_group_name = route.resource_group_name
+      route_table_name    = module.route_tables.route_table_names[route.route_table_key]
+      address_prefix      = route.address_prefix
+      next_hop_type       = route.next_hop_type
       next_hop_in_ip_address = (
         route.next_hop_type == "VirtualAppliance"
         ? module.firewalls.firewall_private_ips[route.firewall_key]
