@@ -166,3 +166,11 @@ variable "windows_vms" {
 variable "public_ips" {
   type = any
 }
+
+variable "application_gateways" {
+  type = any
+}
+
+variable "vm_extensions" {
+  type = any
+}

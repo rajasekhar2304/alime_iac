@@ -161,3 +161,32 @@ module "public_ips" {
     module.resource_groups
   ]
 }
+
+module "application_gateways" {
+  source = "./modules/application-gateway"
+  application_gateways = {
+    for k, agw in var.application_gateways :
+    k => merge(agw, {
+      subnet_id = module.subnets.subnet_ids[agw.subnet_key]
+      public_ip_id = module.public_ips.public_ip_ids[agw.public_ip_key]
+    })
+  }
+  common_tags = local.common_tags
+  depends_on = [
+    module.vnet_peerings,
+    module.firewalls
+  ]
+}
+
+module "vm_extensions" {
+  source = "./modules/vm-extension"
+  vm_extensions = {
+    for k, ext in var.vm_extensions :
+    k => merge(ext, {
+      virtual_machine_id = module.windows_vms.vm_ids[ext.vm_key]
+    })
+  }
+  depends_on = [
+    module.windows_vms
+  ]
+}
