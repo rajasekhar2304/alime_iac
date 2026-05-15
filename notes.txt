@@ -6,4 +6,5 @@
 > terraform destroy -var-file=environments/dev.tfvars
 > terraform destroy -var-file=environments/dev.tfvars -lock=false
 > terraform init -reconfigure -backend-config=./backend/dev.hcl
+> terraform apply -target=module.resource_groups -var-file=environments/dev.tfvars
 
